@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1> {{ detailed_mov.title }} </h1>
+{% endblock %}
+
+{% block body %}
+    <h2> Synopsis: {{ detailed_mov.overview }} </h2>
+    <h3>Release Date: {{ detailed_mov.release_date }} </h3>
+    <img src="{{ detailed_mov.poster_path }}" class="img">
+
+     <form action="/review" method="POST">
+        <h2>RATE THIS MOVIE</h2>
+        <p>
+            <input type="number" name="score" min="1" max="10">
+        </p>
+        
+            <input type="hidden" name="mov_id" value="{{ detailed_mov.movie_id }}"> 
+        
+        <p>
+            <input type="submit">
+        </p>
+     </form>   
+{% endblock %}
